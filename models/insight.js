@@ -25,7 +25,7 @@ class Insight {
     };
 
     static async create(title, text, url) {
-        const res = await db.query("INSERT INTO insight (insight_title, insight_text, insight_source_url) VALUES ($1, $2) RETURNING *;",
+        const res = await db.query("INSERT INTO insight (insight_title, insight_text, insight_source_url) VALUES ($1, $2, $3) RETURNING *;",
             [title, text, url]);
         if (res.rows.length != 1) {
             throw new Error("Unable to create insight.")
