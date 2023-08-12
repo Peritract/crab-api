@@ -20,7 +20,7 @@ async function create (req, res) {
         if (typeof title != "string" || title.length < 1) {
             throw new Error("Cannot create an empty insight.");
         } else if (typeof text != "string" || text.length < 1) {
-            throw new Error("Cannot create an empty insight.");
+            throw new Error("Cannot create an insight with no evidence.");
         } else if (typeof url != "string" || url.length < 1) {
             throw new Error("Cannot create an insight without a source.");
         }
