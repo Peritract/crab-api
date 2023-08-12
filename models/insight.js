@@ -2,8 +2,9 @@ const db = require("../database/connect");
 
 class Insight {
 
-    constructor({ insight_id, insight_text, insight_source_url, created_at }) {
+    constructor({ insight_id, insight_title, insight_text, insight_source_url, created_at }) {
         this.id = insight_id;
+        this.title = insight_title;
         this.text = insight_text;
         this.url = insight_source_url;
         this.at = created_at;
@@ -23,8 +24,9 @@ class Insight {
         return res.rows.map(r => new Insight(r));
     };
 
-    static async create(text, url) {
-        const res = await db.query("INSERT INTO insight (insight_text, insight_source_url) VALUES ($1, $2) RETURNING *;", [text, url]);
+    static async create(title, text, url) {
+        const res = await db.query("INSERT INTO insight (insight_title, insight_text, insight_source_url) VALUES ($1, $2) RETURNING *;",
+            [title, text, url]);
         if (res.rows.length != 1) {
             throw new Error("Unable to create insight.")
         }

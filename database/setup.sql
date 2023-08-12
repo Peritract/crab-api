@@ -4,6 +4,7 @@ DROP TABLE insight;
 
 CREATE TABLE insight (
     insight_id INT GENERATED ALWAYS AS IDENTITY,
+    insight_title TEXT NOT NULL,
     insight_text TEXT NOT NULL,
     insight_source_url TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
